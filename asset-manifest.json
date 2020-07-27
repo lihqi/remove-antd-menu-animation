@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/remove-antd-menu-animation/static/css/main.8ea81e53.chunk.css",
+    "main.js": "/remove-antd-menu-animation/static/js/main.4bb06bed.chunk.js",
+    "main.js.map": "/remove-antd-menu-animation/static/js/main.4bb06bed.chunk.js.map",
+    "runtime-main.js": "/remove-antd-menu-animation/static/js/runtime-main.2e5dc3f0.js",
+    "runtime-main.js.map": "/remove-antd-menu-animation/static/js/runtime-main.2e5dc3f0.js.map",
+    "static/css/2.cf37ca46.chunk.css": "/remove-antd-menu-animation/static/css/2.cf37ca46.chunk.css",
+    "static/js/2.c2313791.chunk.js": "/remove-antd-menu-animation/static/js/2.c2313791.chunk.js",
+    "static/js/2.c2313791.chunk.js.map": "/remove-antd-menu-animation/static/js/2.c2313791.chunk.js.map",
+    "index.html": "/remove-antd-menu-animation/index.html",
+    "precache-manifest.380c596dc947e7691dc5e69ab1de41c4.js": "/remove-antd-menu-animation/precache-manifest.380c596dc947e7691dc5e69ab1de41c4.js",
+    "service-worker.js": "/remove-antd-menu-animation/service-worker.js",
+    "static/css/2.cf37ca46.chunk.css.map": "/remove-antd-menu-animation/static/css/2.cf37ca46.chunk.css.map",
+    "static/css/main.8ea81e53.chunk.css.map": "/remove-antd-menu-animation/static/css/main.8ea81e53.chunk.css.map",
+    "static/js/2.c2313791.chunk.js.LICENSE.txt": "/remove-antd-menu-animation/static/js/2.c2313791.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2e5dc3f0.js",
+    "static/css/2.cf37ca46.chunk.css",
+    "static/js/2.c2313791.chunk.js",
+    "static/css/main.8ea81e53.chunk.css",
+    "static/js/main.4bb06bed.chunk.js"
+  ]
+}
