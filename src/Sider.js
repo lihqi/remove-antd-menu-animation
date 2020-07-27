@@ -1,77 +1,105 @@
 import React from "react";
-// import { Menu, Icon } from "antd";
-import { Icon } from "antd";
+import { Menu, Icon } from "antd";
 import MyMenu from "./MyMenu";
-
 import "antd/dist/antd.css";
-const Menu = MyMenu;
-const { SubMenu } = Menu;
+import data from "./data";
 
+let root = data[0];
+let dataMap = {};
+let allDept = [];
+data.forEach(item => {
+    dataMap["dept_" + item.key] = item;
+    allDept.push(item.key);
+});
 class Sider extends React.Component {
-  handleClick = (e) => {
-    console.log("click ", e);
-  };
+    constructor(props) {
+        super(props);
+        this.state = {
+            showAll: true,
+            openKeys: allDept,
+            Menu: props.type === 1 ? Menu : MyMenu
+        };
+    }
+    renderDept = item => {
+        const { dept, key, name, user } = item;
+        const SubMenu = this.state.Menu.SubMenu;
+        return (
+            <SubMenu
+                key={key}
+                title={
+                    <div className="wrap">
+                        <Icon type="appstore" />
+                        {/* <span>{name}</span> */}
+                        <span>部门{key}</span>
+                    </div>
+                }
+            >
+                {user.map(jItem => {
+                    return this.renderUser(jItem);
+                })}
 
-  render() {
-    return (
-      <Menu
-        onClick={this.handleClick}
-        style={{ width: 256 }}
-        defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["sub1"]}
-        mode="inline"
-      >
-        <SubMenu
-          key="sub1"
-          title={
-            <span>
-              <Icon type="mail" />
-              <span>Navigation One</span>
-            </span>
-          }
-        >
-          <Menu.ItemGroup key="g1" title="Item 1">
-            <Menu.Item key="1">Option 1</Menu.Item>
-            <Menu.Item key="2">Option 2</Menu.Item>
-          </Menu.ItemGroup>
-          <Menu.ItemGroup key="g2" title="Item 2">
-            <Menu.Item key="3">Option 3</Menu.Item>
-            <Menu.Item key="4">Option 4</Menu.Item>
-          </Menu.ItemGroup>
-        </SubMenu>
-        <SubMenu
-          key="sub2"
-          title={
-            <span>
-              <Icon type="appstore" />
-              <span>Navigation Two</span>
-            </span>
-          }
-        >
-          <Menu.Item key="5">Option 5</Menu.Item>
-          <Menu.Item key="6">Option 6</Menu.Item>
-          <SubMenu key="sub3" title="Submenu">
-            <Menu.Item key="7">Option 7</Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
-          </SubMenu>
-        </SubMenu>
-        <SubMenu
-          key="sub4"
-          title={
-            <span>
-              <Icon type="setting" />
-              <span>Navigation Three</span>
-            </span>
-          }
-        >
-          <Menu.Item key="9">Option 9</Menu.Item>
-          <Menu.Item key="10">Option 10</Menu.Item>
-          <Menu.Item key="11">Option 11</Menu.Item>
-          <Menu.Item key="12">Option 12</Menu.Item>
-        </SubMenu>
-      </Menu>
-    );
-  }
+                {dept.map(dItem => {
+                    return this.renderDept(dataMap["dept_" + dItem]);
+                })}
+            </SubMenu>
+        );
+    };
+    renderUser = id => {
+        return (
+            <Menu.Item key={id}>
+                <div style={{ textAlign: "left" }}>用户{id}</div>
+            </Menu.Item>
+        );
+    };
+    openChange = arr => {
+        this.setState({
+            openKeys: arr
+        });
+    };
+    handler = showAll => {
+        let next = showAll ? allDept : [];
+        this.setState({
+            showAll,
+            openKeys: next
+        });
+    };
+    render() {
+        let M = this.state.Menu;
+        return (
+            <div className="App">
+                <div className="test-wrap">
+                    <div
+                        style={{
+                            color: this.state.showAll ? "blue" : "black",
+                            cursor: "pointer"
+                        }}
+                        onClick={this.handler.bind(this, true)}
+                    >
+                        全部展开
+                    </div>
+                    <div
+                        style={{
+                            color: !this.state.showAll ? "blue" : "black",
+                            cursor: "pointer"
+                        }}
+                        onClick={this.handler.bind(this, false)}
+                    >
+                        全部收起
+                    </div>
+                    <M
+                        openKeys={this.state.openKeys}
+                        onOpenChange={this.openChange}
+                        mode="inline"
+                        inlineIndent={14}
+                    >
+                        {root.dept.map(item => {
+                            return this.renderDept(dataMap["dept_" + item]);
+                        })}
+                    </M>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Sider;

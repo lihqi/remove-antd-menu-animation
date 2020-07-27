@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.wrap {
+  display: flex;
+}
+.ant-menu-submenu-title .anticon {
+  line-height: 40px;
+}
+.test-wrap {
+  width: 300px;
+  float: left;
+}
