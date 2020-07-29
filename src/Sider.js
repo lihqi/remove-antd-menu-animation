@@ -1,5 +1,6 @@
 import React from "react";
-import { Menu, Icon } from "antd";
+import { Menu } from "antd";
+import { SettingOutlined } from "@ant-design/icons";
 import MyMenu from "./MyMenu";
 import "antd/dist/antd.css";
 import data from "./data";
@@ -28,7 +29,7 @@ class Sider extends React.Component {
                 key={key}
                 title={
                     <div className="wrap">
-                        <Icon type="appstore" />
+                        <SettingOutlined />
                         {/* <span>{name}</span> */}
                         <span>部门{key}</span>
                     </div>
@@ -91,6 +92,7 @@ class Sider extends React.Component {
                         onOpenChange={this.openChange}
                         mode="inline"
                         inlineIndent={14}
+                        // inlineCollapsed={true}
                     >
                         {root.dept.map(item => {
                             return this.renderDept(dataMap["dept_" + item]);
